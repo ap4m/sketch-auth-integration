@@ -6,9 +6,9 @@ import { AuthProvider } from "react-oidc-context";
 import { User } from "oidc-client-ts";
 
 const oidcConfig = {
-  authority: "http://localhost:8787/",
-  client_id: "0FAEa482fc4936553c27CB46ae6cBD4746503cB496331c5bD080a7476Ee24f25",
-  redirect_uri: "http://localhost:5173/"
+  authority: import.meta.env.VITE_AUTHORITY_URI,
+  client_id: import.meta.env.VITE_CLIENT_ID,
+  redirect_uri: import.meta.env.VITE_REDIRECT_URI
 };
 
 const onSigninCallback = (_user: User | void): void => {
