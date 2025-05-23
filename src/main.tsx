@@ -8,7 +8,8 @@ import { User } from "oidc-client-ts";
 const oidcConfig = {
   authority: import.meta.env.VITE_AUTHORITY_URI,
   client_id: import.meta.env.VITE_CLIENT_ID,
-  redirect_uri: import.meta.env.VITE_REDIRECT_URI
+  redirect_uri: import.meta.env.VITE_REDIRECT_URI,
+  scope: "openid profile"
 };
 
 const onSigninCallback = (_user: User | void): void => {

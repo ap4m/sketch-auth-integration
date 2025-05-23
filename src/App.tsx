@@ -4,6 +4,8 @@ import { useAuth } from "react-oidc-context";
 function App() {
     const auth = useAuth();
 
+    console.log("Profile=", JSON.stringify(auth.user?.profile))
+
     switch (auth.activeNavigator) {
         case "signinSilent":
             return <div>Signing you in...</div>;
@@ -22,8 +24,9 @@ function App() {
     if (auth.isAuthenticated) {
         return (
         <div>
-            Hello {auth.user?.profile.email}
-            <button onClick={() => void auth.removeUser()}>Log out</button>
+            Hello {auth.user?.profile.first_name as string}{' '}{auth.user?.profile.last_name as string}
+            <br />{(auth.user?.profile.roles as string[]).includes("sketch_auth_admin") ? <button onClick={() => alert("You superstar!")}>This is super special button for you as an admin</button> : "Nothing for you, you are not special (enough)"}
+            <br /><button onClick={() => void auth.removeUser()}>Log out</button>
         </div>
         );
     }
