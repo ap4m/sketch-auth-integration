@@ -8,31 +8,37 @@ The authentication flow is using 'react-oidc-context': https://github.com/authts
 
 ## Configuring Melody
 
-You will need to add an App via the Admin Panel, which will give you the Client Id - it can be called anything you want
+You will need to add an **App** via the Admin Panel, which will give you the Client Id - it can be called anything you want
 
-You will need to add the URI of where this sketch is hosted/running from to the 'Redirect URIs' in the App via the Admin Panel - for local development, the default is http://localhost:5173/
+You will need to add the URI of where this sketch is hosted/running from to the 'Redirect URIs' in the **App** via the Admin Panel - for local development, the default is http://localhost:5173/
 
-You will need to add a Role via the Admin Panel called 'sketch_auth_admin', which is used in the sketch to show/hide a button
+You will need to add a **Role** via the Admin Panel called `sketch_auth_admin`, which is used in the sketch to show/hide a button
 
-By adding the 'sketch_auth_admin' role to the user you are logging in with this will toggle a button to be shown in the sketch - this is configured in Users via the Admin Panel
+By adding the `sketch_auth_admin` role to the user you are logging in with this will toggle a button to be shown in the sketch - this is configured in **Users** via the Admin Panel
 
 ## Configuring the sketch for local development
 
-Copy the sample.env file to .env.local and edit variables in the .env.local to match how you have setup your local environment.
+Copy the `sample.env` file to `.env.local` and edit variables in the `.env.local` to match how you have setup your local environment.
 
-`cp sample.env .env.local`
+```
+cp sample.env .env.local
+```
 
-They are set to default so you shouldn't have to do much.
+(They are set to default so you shouldn't have to do much.)
 
 ## Running the sketch locally
 
 Run your the Melody Auth server locally
 
-```cd [path to melody auth]/server
-npm run dev:start```
+```
+cd [path to melody auth]/server
+npm run dev:start
+```
 
 For configuration of the Admin Panel locally, see: https://auth.valuemelody.com/admin-panel-setup.html
 
 To start the sketch using Vite
 
-`npm run dev`
+```
+npm run dev
+```
