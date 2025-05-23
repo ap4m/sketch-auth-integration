@@ -10,7 +10,7 @@ The authentication flow is using 'react-oidc-context': https://github.com/authts
 
 You will need to add an App via the Admin Panel, which will give you the Client Id - it can be called anything you want
 
-You will need to add the URI of where this sketch is hosted/running from to the 'Redirect URIs' in the App via the Admin Panel - for local development, the default http://localhost:5173/
+You will need to add the URI of where this sketch is hosted/running from to the 'Redirect URIs' in the App via the Admin Panel - for local development, the default is http://localhost:5173/
 
 You will need to add a Role via the Admin Panel called 'sketch_auth_admin', which is used in the sketch to show/hide a button
 
@@ -28,11 +28,11 @@ They are set to default so you shouldn't have to do much.
 
 Run your the Melody Auth server locally
 
-`cd [path to melody auth]/server`
-`npm run dev:start`
+`cd [path to melody auth]/server
+npm run dev:start`
 
-For configuration of the Admin Panel, see: https://auth.valuemelody.com/admin-panel-setup.html
+For configuration of the Admin Panel locally, see: https://auth.valuemelody.com/admin-panel-setup.html
 
-Run the sketch locally
+To start the sketch using Vite
 
 `npm run dev`
