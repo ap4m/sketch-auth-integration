@@ -28,8 +28,8 @@ They are set to default so you shouldn't have to do much.
 
 Run your the Melody Auth server locally
 
-`cd [path to melody auth]/server
-npm run dev:start`
+```cd [path to melody auth]/server
+npm run dev:start```
 
 For configuration of the Admin Panel locally, see: https://auth.valuemelody.com/admin-panel-setup.html
 
