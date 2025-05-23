@@ -1,54 +1,38 @@
-# React + TypeScript + Vite
+# Sketch: Authentication Integration for React on Cloudflare 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This sketch provides a minimal setup to get Melody Auth working with a React template configured for deployment in Cloudflare.
 
-Currently, two official plugins are available:
+The bones of this are from the Cloudflare React Template: https://developers.cloudflare.com/pages/framework-guides/deploy-a-react-site/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The authentication flow is using 'react-oidc-context': https://github.com/authts/react-oidc-context
 
-## Expanding the ESLint configuration
+## Configuring Melody
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+You will need to add an App via the Admin Panel, which will give you the Client Id - it can be called anything you want
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+You will need to add the URI of where this sketch is hosted/running from to the 'Redirect URIs' in the App via the Admin Panel - for local development, the default http://localhost:5173/
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+You will need to add a Role via the Admin Panel called 'sketch_auth_admin', which is used in the sketch to show/hide a button
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+By adding the 'sketch_auth_admin' role to the user you are logging in with this will toggle a button to be shown in the sketch - this is configured in Users via the Admin Panel
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Configuring the sketch for local development
+
+Copy the sample.env file to .env.local and edit variables in the .env.local to match how you have setup your local environment.
+
+`cp sample.env .env.local`
+
+They are set to default so you shouldn't have to do much.
+
+## Running the sketch locally
+
+Run your the Melody Auth server locally
+
+`cd [path to melody auth]/server`
+`npm run dev:start`
+
+For configuration of the Admin Panel, see: https://auth.valuemelody.com/admin-panel-setup.html
+
+Run the sketch locally
+
+`npm run dev`
