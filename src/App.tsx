@@ -1,10 +1,12 @@
 import './App.css'
 import { useAuth } from "react-oidc-context";
+import { useState } from "react";
 
 function App() {
     const auth = useAuth();
+    const [name, setName] = useState("OK (Click to Update!)");
 
-    console.log("Profile=", JSON.stringify(auth.user?.profile))
+    //console.log("Profile=", JSON.stringify(auth.user?.profile))
 
     switch (auth.activeNavigator) {
         case "signinSilent":
@@ -25,7 +27,16 @@ function App() {
         return (
         <div>
             Hello {auth.user?.profile.first_name as string}{' '}{auth.user?.profile.last_name as string}
-            <br />{(auth.user?.profile.roles as string[]).includes("sketch_auth_admin") ? <button onClick={() => alert("You superstar!")}>This is super special button for you as an admin</button> : "Nothing for you, you are not special (enough)"}
+            <br />{(auth.user?.profile.roles as string[]).includes("sketch_auth_admin") ? <button
+          onClick={() => {
+            fetch("/api/")
+              .then((res) => res.json() as Promise<{ name: string }>)
+              .then((data) => setName(data.name));
+          }}
+          aria-label="get name"
+        >
+          Current Status: {name}
+        </button> : "Nothing for you, you are not special (enough)"}
             <br /><button onClick={() => void auth.removeUser()}>Log out</button>
         </div>
         );
