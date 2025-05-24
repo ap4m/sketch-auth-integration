@@ -1,4 +1,7 @@
 name = "sketch-auth-integration"
 compatibility_date = "2025-04-03"
+# Cloudflare has some billing specific behaviours which affect routing: https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/
+# For this sketch being able to access the /api/ is handy so we have disabled this using 'assets_navigation_has_no_effect': https://developers.cloudflare.com/workers/configuration/compatibility-flags/#navigation-requests-prefer-asset-serving 
+compatibility_flags = [ "nodejs_compat", "assets_navigation_has_no_effect" ]
 assets = { not_found_handling = "single-page-application" }
 main = "./worker/index.ts"
